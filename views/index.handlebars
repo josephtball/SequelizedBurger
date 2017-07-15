@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="box">
+				<div class="columns is-mobile">
+					<div class="column has-text-right">
+						<ul>
+							{{#each burgers}}
+								{{#unless this.devoured}}
+								<li class="level">
+								<div class="level-item level-right">
+									<p class="is-inline">{{this.burger_name}}</p>
+									<form class="is-inline leftMargin" action="/{{this.id}}?_method=put" method="POST">
+										<input type="hidden" name="devoured" value="true">
+										<button class="button is-small" type="submit">Devour It</button>
+									</form>
+								</div>
+								</li>
+								{{/unless}}
+							{{/each}}
+						</ul>
+					</div>
+					<div class="column">
+						<ul>
+							{{#each burgers}}
+								{{#if this.devoured}}
+								<li class="level">
+								<div class="level-item level-left">
+									<p>{{this.id}}. {{this.burger_name}}</p>
+								</div>
+								</li>
+								{{/if}}
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+				<div class="columns">
+					<div class="column has-text-centered">
+						<h2 class="subtitle is-3">Add a Burger</h2>
+						<div class="level">
+							<form class="level-item" action="/" method="POST">
+								<div class="field is-grouped">
+									<p class="control">
+										<input class="input" type="text" name="burger_name" placeholder="Burger Name">
+									</p>
+									<p class="control">
+										<button class="button" type="submit">Add</button>
+									</p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+	</div>
+</div>
